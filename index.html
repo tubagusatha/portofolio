@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <script
+      src="https://kit.fontawesome.com/e81773e2de.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+      }
+      body.bodyscroll {
+        background-color: #fff;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        transition: background-color 0.4s ease;
+        background-color: #010101;
+        overflow-x: hidden;
+        height: 400vh;
+        color: #fff;
+      }
+      a {
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+        color: #fff;
+      }
+
+      /* ========== HEADER ========== */
+      /* header {
+        transition: background-color 0.4s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+      }
+      nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin: 0px 20px;
+      }
+      nav ul li a {
+        position: relative;
+        content: "";
+      }
+      nav ul li a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 0;
+        height: 1px;
+        background-color: #fff;
+        transition: all ease 0.5s;
+      }
+      nav ul li a:hover::before {
+        width: 100%;
+      } */
+
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #000;
+        transition: background-color 0.4s ease;
+        z-index: 999;
+      }
+
+      .dropdown__menu {
+        list-style: none;
+      }
+
+      /*=============== NAV ===============*/
+      .nav {
+        height: 50px;
+        background: #000;
+        padding: 20px;
+      }
+
+      .nav__logo,
+      .nav__burger,
+      .nav__close {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      li {
+        text-decoration: none;
+      }
+      .nav__data {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav__logo {
+        display: inline-flex;
+        align-items: center;
+        column-gap: 0.25rem;
+        font-weight: 200;
+        /* Color highlighting when pressed on mobile devices */
+        /*-webkit-tap-highlight-color: transparent;*/
+      }
+
+      .nav__logo i {
+        font-weight: initial;
+        font-size: 1.25rem;
+      }
+
+      .nav__toggle {
+        position: relative;
+        width: 32px;
+        height: 32px;
+      }
+
+      .nav__burger,
+      .nav__close {
+        position: absolute;
+        width: max-content;
+        height: max-content;
+        inset: 0;
+        margin: auto;
+        font-size: 1.25rem;
+        cursor: pointer;
+        transition: opacity 0.1s, transform 0.4s;
+      }
+
+      .nav__close {
+        opacity: 0;
+      }
+
+      .content {
+        padding: 0 100px;
+        height: 100vh;
+        align-items: center;
+        display: flex;
+        position: relative;
+      }
+      .content .text {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 60px;
+        user-select: none;
+        font-weight: bold;
+        line-height: 65px;
+        text-align: center;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+      h1 .developer {
+        position: relative;
+      }
+      h1 .developer::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: #fff;
+        left: 0;
+        bottom: 0;
+        transition: all ease 1s;
+      }
+
+      #test {
+        color: #1160a6;
+      }
+
+      h1 .developer:hover::before {
+        width: 100%;
+      }
+      .bottom_text {
+        font-family: "Poppins", sans-serif;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        text-align: center;
+        width: 100%;
+      }
+
+      .bottom_text h5 {
+        margin: 10px;
+      }
+
+      .bottom_text a i {
+        font-size: 15px;
+        width: auto;
+        border-radius: 100%;
+        padding: 5px 6px;
+        border: 3px solid #fff;
+        animation: blink 1.5s infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* ========== ABOUT ========== */
+
+      .about {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        padding: 30px;
+        justify-content: center;
+        align-items: center;
+        margin: 760px 80px 370px 80px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for better visibility */
+      }
+
+      .profile-image img {
+        max-width: 290px;
+        border-radius: 20px;
+        margin-right: 20px;
+      }
+
+      .description {
+        padding: 20px;
+        margin-right: 50px;
+        width: 60%;
+      }
+
+      .description .wrapper h2 {
+        font-size: 28px;
+        color: #333;
+        &:nth-of-type(2) {
+          color: rgb(48, 107, 203);
+        }
+      }
+
+      .description p {
+        margin-top: 20px;
+        font-size: 19px;
+        text-align: justify;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #666;
+      }
+
+      #google_element {
+        width: 50%;
+        position: relative; /* Untuk mengatur posisi elemen */
+        display: contents; /* Untuk mengizinkan elemen mengambil lebar minimum yang diperlukan */
+        border: none; /* Untuk menambahkan border pada elemen */
+        padding: 10px; /* Untuk memberikan jarak antara konten dan border */
+        border-radius: 5px; /* Untuk mengubah sudut elemen menjadi bulat */
+      }
+
+      /* ========== MY-PROJECT ========== */
+      .experience {
+        background: #000;
+      }
+
+      .title-experience {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+
+      .title-experience h1 {
+        font-weight: 500;
+        color: #fff;
+        font-size: 50px;
+      }
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px 0;
+      }
+
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        background-color: #fff;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+      }
+
+      .container {
+        padding: 10px 30px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+      }
+
+      .container::after {
+        content: "";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: -17px;
+        background-color: #fff;
+        border: 4px solid #fff;
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .right::after {
+        left: -16px;
+      }
+
+      .left {
+        left: 0;
+      }
+
+      .right {
+        left: 50%;
+      }
+
+      .content-experience {
+        padding: 20px 30px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.311);
+        background-color: #fff;
+        position: relative;
+        border-radius: 6px;
+      }
+
+      .content-experience p {
+        color: #000;
+      }
+
+      .left .content-experience {
+        margin-left: 0;
+      }
+
+      .right .content-experience {
+        margin-left: 20px;
+      }
+
+      .title {
+        font-size: 1.2em;
+        color: #000;
+        margin-bottom: 10px;
+      }
+
+      .date {
+        font-size: 0.9em;
+        color: #000;
+        margin-bottom: 5px;
+      }
+
+      .content-experience img {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+
+      .svg-top,
+      .svg-bottom {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: 0;
+      }
+
+      .svg-container {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* ========== SKILSS ========== */
+
+      .my-skill h1 {
+        color: #000;
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+      }
+
+      .my-skill {
+        margin-top: 370px;
+      }
+      /* card */
+      .text-carousel {
+        text-align: center;
+        padding: 40px;
+        margin-bottom: 20px;
+        font-family: "Poppins", sans-serif;
+        color: #000;
+      }
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        margin-top: 150px;
+      }
+
+      .carousel-container2 {
+        margin-top: 5px;
+        position: relative;
+        width: 100%;
+      }
+
+      .card-carousel {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        perspective: 1000px;
+      }
+
+      .card {
+        user-select: none;
+        width: 200px;
+        height: auto;
+        margin: 20px 20px 0px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transform-style: preserve-3d;
+        transition: transform 0.9s, opacity 0.5s;
+        position: relative;
+        z-index: 1;
+        border-radius: 25px;
+        padding: 15px;
+        opacity: 0.6;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.311); /* Soft shadow for better visibility */
+      }
+
+      .card img {
+        user-select: none;
+        pointer-events: none;
+        margin: 0px 10px;
+        max-height: 150px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 5px;
+      }
+
+      .card-content h3 {
+        color: #000;
+      }
+
+      .card.inactive {
+        transition: 0.7s;
+        opacity: 2.1;
+        transform: scale(1.2);
+        /* pointer-events: none; */
+        z-index: 4;
+      }
+
+      .my-projects {
+        margin-top: 200px;
+        text-align: center;
+        padding: 40px 30px;
+      }
+
+      .my-projects h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .project {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 20px 0;
+        text-align: center;
+        border-radius: 10px;
+
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .project img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .project h3 {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .project-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .project p {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        color: #000;
+      }
+
+      .project a {
+        text-decoration: none;
+        padding: 8px 16px;
+        background-color: #05cead;
+        color: #000;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .project a:hover {
+        background-color: #04ad8e;
+      }
+      /* end card */
+
+      .footer {
+        margin-top: 600px;
+        height: 200px;
+        width: 100%;
+        background: #000;
+        background-size: 1000px 100px;
+      }
+
+      @media screen and (max-width: 600px) {
+        .title-experience {
+          display: block;
+          margin: 0px 30px;
+        }
+
+        .title-experience h1 {
+          font-size: 44px;
+        }
+
+        .card-carousel {
+          flex-direction: column;
+        }
+
+        .card {
+          margin: 20px auto;
+          height: auto;
+          width: 200px;
+          padding: 10px;
+        }
+
+        .card img {
+          margin-top: 20px;
+          width: 120px;
+          height: auto;
+        }
+
+        .card.inactive {
+          transition: 0.7s;
+          opacity: 1.9;
+          transform: scale(1.1);
+        }
+
+        .timeline::after {
+          left: 31px;
+        }
+        .container {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+        .container::before {
+          left: 60px;
+          border: medium solid #00ffff;
+          border-width: 10px 10px 10px 0;
+          border-color: transparent #00ffff transparent transparent;
+        }
+        .right {
+          left: 0%;
+        }
+        .right::after {
+          left: 60px;
+        }
+        .right .content {
+          margin-left: 0;
+        }
+        .left::after,
+        .right::after {
+          left: 15px;
+        }
+        .left .content::before,
+        .right .content::before {
+          left: 60px;
+          border: medium solid #333333;
+          border-width: 10px 10px 10px 0;
+          border-color: transparent #333333 transparent transparent;
+        }
+      }
+
+      /* Navigation for mobile devices */
+      @media screen and (max-width: 1118px) {
+        .nav__menu {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: auto;
+          padding: 20px;
+          overflow: auto;
+          pointer-events: none;
+          background: #000000e3;
+          opacity: 0;
+          transition: top 0.4s, opacity 0.3s;
+        }
+        .nav__menu::-webkit-scrollbar {
+          width: 0;
+        }
+        .nav__list {
+          list-style: none;
+          background-color: transparent;
+          padding-top: 1rem;
+        }
+      }
+
+      .nav__link {
+        color: #fff;
+        background-color: transparent;
+        font-weight: 400;
+        list-style: none;
+        padding: 10px 1.5rem;
+        justify-content: space-around;
+        align-items: flex-end;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .nav__link:hover {
+        background-color: transparent;
+      }
+
+      /* Show menu */
+      .show-menu {
+        opacity: 1;
+        pointer-events: initial;
+      }
+
+      /* Show icon */
+      .show-icon .nav__burger {
+        opacity: 0;
+        transform: rotate(90deg);
+      }
+      .show-icon .nav__close {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+
+      /*=============== DROPDOWN ===============*/
+      .dropdown__item {
+        cursor: pointer;
+      }
+
+      .dropdown__arrow {
+        font-size: 1.25rem;
+        font-weight: initial;
+        transition: transform 0.4s;
+      }
+
+      .dropdown__link,
+      .dropdown__sublink {
+        padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+        color: #fff;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+        font-weight: 400;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown__link i,
+      .dropdown__sublink i {
+        list-style: none;
+        font-size: 1.25rem;
+        font-weight: initial;
+      }
+
+      .dropdown__link:hover,
+      .dropdown__sublink:hover {
+        background-color: rgba(100, 100, 100, 0.27);
+      }
+
+      .dropdown__menu,
+      .dropdown__submenu {
+        max-height: 0;
+        list-style: none;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+      }
+
+      /* Show dropdown menu & submenu */
+      .dropdown__item:hover .dropdown__menu,
+      .dropdown__subitem:hover > .dropdown__submenu {
+        max-height: 1000px;
+        transition: max-height 0.4s ease-in;
+      }
+
+      /* Rotate dropdown icon */
+      .dropdown__item:hover .dropdown__arrow {
+        transform: rotate(180deg);
+      }
+
+      /*=============== DROPDOWN SUBMENU ===============*/
+      .dropdown__add {
+        margin-left: auto;
+      }
+
+      .dropdown__sublink {
+        background-color: transparent;
+      }
+
+      @media screen and (max-width: 340px) {
+        /* .containers {
+          margin-inline: 1rem;
+        } */
+
+        .nav__link {
+          list-style: none;
+          padding-inline: 1rem;
+        }
+      }
+
+      /* For large devices */
+      @media screen and (min-width: 1118px) {
+        .nav {
+          height: 80px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .nav__link::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          width: 0;
+          height: 1px;
+          background-color: #fff;
+          transition: all ease 0.5s;
+        }
+        .nav__link:hover::before {
+          width: 100%;
+        }
+
+        .nav__toggle {
+          display: none;
+        }
+        .nav__list {
+          height: 100%;
+          display: flex;
+          list-style: none;
+          column-gap: 3rem;
+        }
+        .nav__link {
+          display: flex;
+          align-items: flex-end;
+          height: 100%;
+          list-style: none;
+          padding: 2px;
+          justify-content: initial;
+          column-gap: 0.25rem;
+        }
+
+        .dropdown__item,
+        .dropdown__subitem {
+          position: relative;
+          list-style: none;
+        }
+
+        .dropdown__menu,
+        .dropdown__submenu {
+          max-height: initial;
+          overflow: initial;
+          position: absolute;
+          list-style: none;
+          left: 0;
+          top: 2rem;
+          list-style: none;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.3s, top 0.3s;
+        }
+
+        li {
+          text-decoration: none;
+        }
+
+        .dropdown__link,
+        .dropdown__sublink {
+          padding-inline: 1rem 3.5rem;
+        }
+
+        .dropdown__subitem .dropdown__link {
+          padding-inline: 1rem;
+        }
+
+        .dropdown__submenu {
+          position: absolute;
+          left: 100%;
+          top: 0.5rem;
+        }
+
+        /* Show dropdown menu */
+        .dropdown__item:hover .dropdown__menu {
+          opacity: 1;
+          top: 5.5rem;
+          pointer-events: initial;
+          transition: top 0.3s;
+        }
+
+        /* Show dropdown submenu */
+        .dropdown__subitem:hover > .dropdown__submenu {
+          opacity: 1;
+          top: 0;
+          pointer-events: initial;
+          transition: top 0.3s;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        h1 {
+          font-size: 40px;
+          line-height: 45px;
+        }
+        .about {
+          padding: 20px;
+          margin: 300px 10px;
+        }
+        .description {
+          padding: 0 10px;
+        }
+        .description .wrapper h2 {
+          font-size: 20px;
+        }
+        .description p {
+          text-align: justify;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+        .profile-image img {
+          display: none;
+        }
+
+        .content {
+          padding: 0 10px;
+        }
+        h1 {
+          font-size: 40px;
+          line-height: 45px;
+        }
+        .bottom_text {
+          bottom: 30px;
+        }
+        .bottom_text h5 {
+          font-size: 12px;
+        }
+        .bottom_text a i {
+          font-size: 12px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .about {
+          flex-direction: column;
+          margin: 300px 20px;
+        }
+        .profile-image {
+          margin-bottom: 20px;
+        }
+        .profile-image img {
+          display: none;
+        }
+        .description {
+          width: 100%;
+          margin-right: 0;
+          padding: 0 20px;
+        }
+        .description .wrapper h2 {
+          font-size: 24px;
+        }
+        .description p {
+          text-align: justify;
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+
+        .my-projects {
+          padding: 30px 0;
+        }
+
+        .project {
+          grid-template-columns: 1fr;
+        }
+
+        
+        .project.reverse {
+          grid-template-columns: 1fr;
+        }
+
+        .project-image {
+          order: -1;
+        }
+        .content {
+          padding: 0 20px;
+        }
+        h1 {
+          font-size: 50px;
+          line-height: 55px;
+        }
+
+        .footer {
+        margin-top: 600px;
+        height: 200px;
+        width: 100%;
+        background: #000;
+        background-size: 768px 100px;
+    }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- ========== HEADER ========== -->
+
+      <!-- <header>
+        <div class="logo">
+          <a href="#"><h2 style="color: #fff">Tubagus</h2></a>
+        </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Project</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </header> -->
+
+      <header class="header">
+        <nav class="nav containers">
+          <div class="nav__data">
+            <a href="#" class="nav__logo"> Portofolio </a>
+
+            <div class="nav__toggle" id="nav-toggle">
+              <i class="ri-menu-line nav__burger"></i>
+              <i class="ri-close-line nav__close"></i>
+            </div>
+          </div>
+
+          <!--=============== NAV MENU ===============-->
+          <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+              <li><a href="#homepage" class="nav__link">Home</a></li>
+
+              <li><a href="#about" class="nav__link">About Me</a></li>
+
+              <!--=============== DROPDOWN 1 ===============-->
+              <li class="dropdown__item">
+                <div class="nav__link">
+                  Social Media
+                  <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                </div>
+
+                <ul class="dropdown__menu">
+                  <li>
+                    <a
+                      href="https://www.instagram.com/tbgssatha/"
+                      class="dropdown__link"
+                    >
+                      <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/tubagus-athalla-nibras-islamy-050b62248/"
+                      class="dropdown__link"
+                    >
+                      <i class="fa-brands fa-linkedin"></i> Linkedin
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://github.com/tubagusatha"
+                      class="dropdown__link"
+                    >
+                      <i class="fa-brands fa-github"></i> Github
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="dropdown__item">
+                <div class="nav__link">
+                  Me? <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                </div>
+
+                <ul class="dropdown__menu">
+                  <li>
+                    <a href="#experience" class="dropdown__link">
+                      Experience
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#skill" class="dropdown__link"> Skills </a>
+                  </li>
+
+                  <li>
+                    <a href="#proyek" class="dropdown__link"> My Project </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="#contact" class="nav__link">Contact Me</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- ========== LANDING PAGE ========== -->
+
+      <section class="content" id="homepage">
+        <div class="text" style="margin-bottom: 100px">
+          <h1>
+            <span>HI👋, i'm</span><br />
+            <span id="test">A Web & Android</span><br />
+            <span class="developer">Developer</span>
+          </h1>
+        </div>
+        <div class="bottom_text">
+          <div class="ggl">
+            <p>Choose Your Language</p>
+            <div id="google_element" class="google"></div>
+
+            <script src="js/ggl.js"></script>
+
+            <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  { pageLanguage: "en" },
+                  "google_element"
+                );
+              }
+            </script>
+            <h5>Scroll down😎</h5>
+            <a href="#about" class="a-main">
+              <i class="fa-solid fa-arrow-down"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div style="margin: 600px 0px 0px 2px" id="about"></div>
+
+      <!-- ========== ABOUT ========== -->
+
+      <div class="about">
+        <div class="description">
+          <div class="wrapper">
+            <h2 id="judul" class="judul">About Me</h2>
+            <h2 id="judul" class="judul">Tubagus Athalla</h2>
+          </div>
+          <p id="deskripsi">
+            Halo! Saya Tubagus Athalla Nibras Islamy, biasa dipanggil Tb, lahir
+            pada 18 September 2006, tinggal di Purwakarta, dan bersekolah di SMK
+            IDN Boarding School. Saya beragama Islam dan hobi saya adalah
+            berenang. Melalui website ini, saya ingin berbagi cerita, prestasi,
+            dan karya-karya saya. Terima kasih sudah mengunjungi halaman
+            portofolio saya!
+          </p>
+        </div>
+        <div class="profile-image">
+          <img src="img/1000002170.jpg" alt="Foto saya" />
+        </div>
+      </div>
+
+      <!-- ========== MY EXPERIENCE ========== -->
+      <div class="svg-container">
+        <svg
+          class="svg-top"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#000"
+            fill-opacity="1"
+            d="M0,128L40,144C80,160,160,192,240,192C320,192,400,160,480,154.7C560,149,640,171,720,197.3C800,224,880,256,960,272C1040,288,1120,288,1200,282.7C1280,277,1360,267,1400,261.3L1440,256L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+          ></path>
+        </svg>
+      </div>
+      <div class="experience">
+        <div class="my-experience">
+          <div class="title-experience">
+            <h1>EXPERIENCE</h1>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="container left">
+            <div class="content-experience">
+              <div class="date">2021</div>
+              <div class="title">Mengikuti Event GDG Bogor</div>
+              <img src="img/event.JPG" alt="Event GDG Bogor" />
+              <p>
+                Jadi disini saya mengkuti event dari GDG (Google Developer
+                Expert) yang berada di Bogor bersama teman2 saya
+              </p>
+            </div>
+          </div>
+          <div class="container right">
+            <div class="content-experience">
+              <div class="date">2022</div>
+              <div class="title">Mendapatkan Sertifikat</div>
+              <img src="img/Sertifikat.png" alt="Sertifikat" />
+              <p>
+                Ini adalah sertifikat yang sudah kami dapatkan dari dicoding,
+                Sebenarnya masih banyak lagi sertifikat yang sudah saya dapatkan
+                cuma saya taro 1 saja untuk jadi gambaran
+              </p>
+            </div>
+          </div>
+          <div class="container left">
+            <div class="content-experience">
+              <div class="date">2023</div>
+              <div class="title">Meraih Medali Emas</div>
+              <img src="img/medali.png" alt="Medali" />
+              <p>
+                Saya telah berhasil meraih medali emas setingkat Nasional dalam
+                kompetisi noSec.
+              </p>
+            </div>
+          </div>
+          <div class="container right">
+            <div class="content-experience">
+              <div class="date">2023</div>
+              <div class="title">Mendapatkan Sertifikat</div>
+              <img src="img/web.png" alt="Sertifikat" />
+              <p>
+                Ini adalah sertifikat yang sudah kami dapatkan dari dicoding,
+                Sebenarnya masih banyak lagi sertifikat yang sudah saya dapatkan
+                cuma saya taro 1 saja untuk jadi gambaran
+              </p>
+            </div>
+          </div>
+          <div class="container left">
+            <div class="content-experience">
+              <div class="date">2024</div>
+              <div class="title">Menuju Ke 10 Negara</div>
+              <img src="img/backpacker.jpg" alt="Event GDG Bogor" />
+              <p>
+                Saya melakukan perjalanan menuju ke 10 negara kurang lebih dalam
+                6 bulan, diantara negara yang saya kunjungi adalah: India,
+                pakistan, Saudi Arabia, Turki, Thailand, Laos, Kambodja,
+                Vietnam, Malaysia
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="svg-container">
+        <svg
+          class="svg-bottom"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+        >
+          <path
+            fill="#000"
+            fill-opacity="1"
+            d="M0,256L30,234.7C60,213,120,171,180,138.7C240,107,300,85,360,96C420,107,480,149,540,181.3C600,213,660,235,720,208C780,181,840,107,900,117.3C960,128,1020,224,1080,229.3C1140,235,1200,149,1260,117.3C1320,85,1380,107,1410,117.3L1440,128L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
+    </main>
+
+    <!-- ========== SKILLS ========== -->
+
+    <div class="carousel-container">
+      <div class="my-skill">
+        <h1 class="judul">My Skills</h1>
+      </div>
+      <div class="card-carousel">
+        <div class="card">
+          <img class="img-carousel" src="img/image 1.png" alt="Image 1" />
+          <div class="card-content"></div>
+        </div>
+        <div class="card">
+          <img class="img-carousel" src="img/image 2.png" alt="Image 2" />
+          <div class="card-content"></div>
+        </div>
+        <div class="card">
+          <img class="img-carousel" src="img/image 3.png" alt="Image 3" />
+          <div class="card-content"></div>
+        </div>
+      </div>
+      <div class="card-carousel">
+        <div class="card">
+          <img class="img-carousel" src="img/image 4.png" alt="Image 4" />
+          <div class="card-content"></div>
+        </div>
+        <div class="card">
+          <img class="img-carousel" src="img/image 5.png" alt="Image 5" />
+          <div class="card-content"></div>
+        </div>
+        <div class="card">
+          <img class="img-carousel" src="img/image 6.png" alt="Image 6" />
+          <div class="card-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-projects" id="proyek">
+      <h2>My Projects</h2>
+      <div class="project">
+        <div>
+          <h3>Futurix</h3>
+          <p>
+            Jadi Ini adalah Website perusahaan buatan saya Yang Bernama Futurix
+          </p>
+          <a href="https://futurixweb.netlify.app/">Visit Web</a>
+        </div>
+        <div class="project-image">
+          <img src="img/ftrx.png" alt="Project 1" id="proyek1" />
+        </div>
+      </div>
+      <div class="project reverse">
+        <div class="project-image">
+          <img src="img/p1.png" alt="Project 2" id="proyek2" />
+        </div>
+
+        <div class="project-content" id="pro2">
+          <h3>EcoLife</h3>
+          <p>
+            Jadi Ini adalah Website E-commerce buatan saya dan teman-teman saya
+            Yang Bernama Pinaltycompany,
+          </p>
+          <a href="https://github.com/tubagusatha/Penalti_company">Visit Web</a>
+        </div>
+      </div>
+      <div class="project">
+        <div class="project-content">
+          <h3>NatureWonderId</h3>
+          <p>
+            Jadi Ini adalah Website Lestari buatan saya Yang Bernama
+            NatureWonderId
+          </p>
+          <a href="https://naturewonderid.netlify.app/">Visit Web</a>
+        </div>
+        <div class="project-image" id="proyek3">
+          <img src="img/ntr.png" alt="Project 1" />
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="text-footer"><h4 class="h4" style="text-align: center; font-size: 30px; padding: 20px;">TERIMA KASIH</h4></div>
+
+      <h4 class="p" style="text-align: center; font-size: 20px;">
+        sampai jumpa lain waktu
+      </h4>
+
+      <div class="wave">
+        <link rel="stylesheet" href="css/wave.css" />
+        <section>
+          <div class="wave wave1"></div>
+          <div class="wave wave2"></div>
+          <div class="wave wave3"></div>
+          <div class="wave wave4"></div>
+          <p class="p" style="text-align: center;">Tubagus athalla nibras islamy</p>
+        </section>
+      </div>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="js/jquery.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script> -->
+    <script src="js/lettering.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script> -->
+    <script src="js/gs.js"></script>
+
+    <script src="js/gasp.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gasp1.js"></script>
+  </body>
+</html>
