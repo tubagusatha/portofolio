@@ -723,141 +723,86 @@ h3 {
 }
 
 /* ==========================================
-   Projects (Swiper Cards Effect)
+   Projects (Sticky Scrolling Cards Effect)
    ========================================== */
 .projects {
-  overflow: hidden;
-  /* Prevent swiper shadow clipping */
-}
-
-.project-carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-  width: 100%;
-}
-
-/* Custom Navigation Buttons */
-.custom-nav {
-  position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  position: relative;
   z-index: 10;
-  width: 60px !important;
-  height: 60px !important;
-  margin: 0 !important;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  backdrop-filter: blur(10px);
-  color: var(--accent-cyan) !important;
-  transition: all 0.3s ease;
 }
 
-.swiper-button-prev.custom-nav {
-  left: 5% !important;
+.sticky-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-bottom: 20vh; /* Space after last card */
+  margin-top: 3rem;
 }
 
-.swiper-button-next.custom-nav {
-  right: 5% !important;
-}
-
-.custom-nav::after {
-  font-size: 1.5rem !important;
-  font-weight: 900;
-}
-
-.custom-nav:hover {
-  background: rgba(6, 182, 212, 0.2);
-  border-color: var(--accent-cyan);
-  color: #fff !important;
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
-  transform: scale(1.1);
-}
-
-.project-swiper {
+.sticky-card {
+  position: sticky;
+  top: calc(15vh + (var(--index) * 30px)); /* Stacks like a deck of cards */
+  height: 60vh;
   width: 100%;
-  max-width: 400px;
-  height: 550px;
-  margin-top: 2rem;
-  flex-shrink: 0;
-}
-
-.swiper-slide {
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
-  padding: 3rem;
-  backdrop-filter: blur(20px);
-  cursor: grab;
+  text-align: center;
+  transform-origin: top center;
+  will-change: transform;
 }
 
-.swiper-slide:active {
-  cursor: grabbing;
-}
-
-/* Deck coloring */
-.swiper-slide:nth-child(1) {
+/* Coloring for each card */
+.sticky-card.card-1 {
   background: linear-gradient(135deg, #0a0f1a, #05050A);
   border-color: rgba(6, 182, 212, 0.3);
 }
 
-.swiper-slide:nth-child(2) {
+.sticky-card.card-2 {
   background: linear-gradient(135deg, #160b24, #05050A);
   border-color: rgba(139, 92, 246, 0.3);
 }
 
-.swiper-slide:nth-child(3) {
+.sticky-card.card-3 {
   background: linear-gradient(135deg, #240b17, #05050A);
   border-color: rgba(236, 72, 153, 0.3);
 }
 
-.swiper-slide:nth-child(4) {
+.sticky-card.card-4 {
   background: linear-gradient(135deg, #24110b, #05050A);
   border-color: rgba(249, 115, 22, 0.3);
 }
 
-.swiper-slide .card-inner {
-  text-align: left;
-  width: 100%;
+.sticky-card-inner {
+  max-width: 600px;
 }
 
 .project-year {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--accent-cyan);
-  padding: 0.5rem 1rem;
-  background: rgba(6, 182, 212, 0.1);
-  border-radius: 100px;
   display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  font-weight: 800;
+  color: var(--accent-cyan);
   margin-bottom: 1.5rem;
 }
 
-.swiper-slide h3 {
-  font-size: clamp(2rem, 5vw, 2.5rem);
-  line-height: 1.1;
-  background: linear-gradient(to right, #fff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.sticky-card-inner h3 {
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  color: #fff;
 }
 
-.swiper-slide p {
+.sticky-card-inner p {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.6;
-  margin-bottom: 2.5rem;
 }
-
-
-
-
 
 /* Skills */
 .skills-badges {
@@ -1300,31 +1245,14 @@ Achievement */ .achievement-list {
     display: none;
   }
 
-  .project-carousel-wrapper {
-    position: relative;
-    gap: 0;
+  /* Projects Mobile */
+  .sticky-card {
+    height: 40vh;
+    padding: 2rem;
   }
-
-  /* On mobile, put arrows inside or very close to the card */
-  .custom-nav {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 10;
-    width: 45px !important;
-    height: 45px !important;
-  }
-
-  .swiper-button-prev.custom-nav {
-    left: -10px !important;
-  }
-
-  .swiper-button-next.custom-nav {
-    right: -10px !important;
-  }
-
-  .custom-nav::after {
-    font-size: 1.2rem !important;
+  
+  .sticky-card-inner h3 {
+    font-size: 1.8rem;
   }
 
   .ach-showcase {

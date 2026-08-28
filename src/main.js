@@ -4,8 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import jsVectorMap from 'jsvectormap';
 import 'jsvectormap/dist/maps/world.js';
 import 'jsvectormap/dist/jsvectormap.css';
-import Swiper from 'swiper/bundle';
-import 'swiper/css/bundle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -383,10 +381,7 @@ setTimeout(() => {
 
   // Experience grid
   revealElements(".list-item");
-
-  // Projects Swiper container reveal
-  revealElements(".project-swiper");
-
+  
   // Skills
   gsap.utils.toArray(".skills").forEach(section => {
     const badges = section.querySelectorAll(".badge");
@@ -488,18 +483,22 @@ const map = new jsVectorMap({
 });
 
 // ==========================================
-// 7. SWIPER INITIALIZATION
+// 7. STICKY CARDS SCROLL EFFECT
 // ==========================================
-const swiper = new Swiper('.project-swiper', {
-  effect: 'cards',
-  grabCursor: true,
-  cardsEffect: {
-    slideShadows: false, // We use custom CSS box-shadows
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
+gsap.utils.toArray(".sticky-card").forEach((card, i, cards) => {
+  if (i !== cards.length - 1) {
+    gsap.to(card, {
+      scale: 0.9,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: card,
+        start: "top 15%", // When it sticks
+        endTrigger: cards[i + 1], // Wait until the next card hits
+        end: "top 15%", 
+        scrub: true,
+      }
+    });
+  }
 });
 
 // ==========================================
