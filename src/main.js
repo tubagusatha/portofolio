@@ -4,6 +4,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import jsVectorMap from 'jsvectormap';
 import 'jsvectormap/dist/maps/world.js';
 import 'jsvectormap/dist/jsvectormap.css';
+import Swiper from 'swiper';
+import { EffectCards, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -69,7 +74,7 @@ const particlesGeometry = new THREE.BufferGeometry();
 const particlesCount = 500;
 const posArray = new Float32Array(particlesCount * 3);
 
-for(let i = 0; i < particlesCount * 3; i++) {
+for (let i = 0; i < particlesCount * 3; i++) {
   posArray[i] = (Math.random() - 0.5) * 20;
 }
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
@@ -120,21 +125,21 @@ function animate() {
   // Mouse Parallax easing
   targetX = mouseX * 0.001;
   targetY = mouseY * 0.001;
-  
+
   objectsGroup.rotation.y += 0.05 * (targetX - objectsGroup.rotation.y);
   objectsGroup.rotation.x += 0.05 * (targetY - objectsGroup.rotation.x);
 
   // Gentle float
   mainObj.rotation.y += 0.002;
   mainObj.rotation.x += 0.001;
-  
+
   coreObj.rotation.y -= 0.01;
   coreObj.rotation.z += 0.005;
 
   mainObj.position.y = Math.sin(elapsedTime * 0.5) * 0.2;
 
   particlesMesh.rotation.y = elapsedTime * 0.02;
-  
+
   globe.rotation.y += 0.003;
 
   renderer.render(scene, camera);
@@ -152,10 +157,10 @@ if (window.matchMedia("(pointer: fine)").matches) {
   window.addEventListener('mousemove', (e) => {
     const posX = e.clientX;
     const posY = e.clientY;
-    
+
     cursorDot.style.left = `${posX}px`;
     cursorDot.style.top = `${posY}px`;
-    
+
     // Smooth trailing outline
     gsap.to(cursorOutline, {
       x: posX,
@@ -187,7 +192,7 @@ if (window.matchMedia("(pointer: fine)").matches) {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      
+
       gsap.to(btn, {
         x: x * 0.3,
         y: y * 0.3,
@@ -205,54 +210,18 @@ if (window.matchMedia("(pointer: fine)").matches) {
     });
   });
 
-  // 3D Tilt for Project Cards
-  const cards = document.querySelectorAll('.project-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      // Calculate rotation (-15 to 15 degrees)
-      const xPct = (x / rect.width) - 0.5;
-      const yPct = (y / rect.height) - 0.5;
-      
-      gsap.to(card, {
-        rotateY: xPct * 15,
-        rotateX: -yPct * 15,
-        duration: 0.5,
-        ease: "power2.out",
-        transformPerspective: 1000
-      });
-      
-      // Update dynamic glow position
-      card.style.setProperty('--x', `${x}px`);
-      card.style.setProperty('--y', `${y}px`);
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, {
-        rotateY: 0,
-        rotateX: 0,
-        duration: 0.5,
-        ease: "power2.out"
-      });
-    });
-  });
-
-  // ------------------------------------------
   // Interactive Hero Section (Parallax & 3D)
   // ------------------------------------------
   const heroSection = document.querySelector('.hero');
   const heroText = document.querySelector('.hero-text');
   const heroImageWrapper = document.querySelector('.image-wrapper');
-  
+
   if (heroSection && heroText && heroImageWrapper) {
     heroSection.addEventListener('mousemove', (e) => {
       const { clientX, clientY } = e;
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      
+
       const xPos = (clientX - centerX) / centerX;
       const yPos = (clientY - centerY) / centerY;
 
@@ -331,19 +300,50 @@ tl.to(mainObj.position, { x: 2, z: -2 }, 0)
 
 
 // Hide elements initially via JS (graceful degradation)
-const hiddenElements = ".hero .content > *, .section-title, .timeline-item, .list-item, .project-card, .badge, .title-large, .subtitle-large, .travel-desc, .ach-item, .final .content > *";
-gsap.set(hiddenElements, { autoAlpha: 0, y: 50 });
+const hiddenElements = ".hero .content > *, .section-title, .timeline-node, .list-item, .project-swiper, .badge, .title-large, .subtitle-large, .travel-desc, .ach-hero-card, .ach-row, .cert-panel, .final .content > *";
+gsap.set(hiddenElements, { autoAlpha: 0, y: 100 });
+
+// ==========================================
+// BACKGROUND PARALLAX EFFECTS
+// ==========================================
+// 1. Continuous floating for Neon Shapes (Lava lamp effect)
+gsap.utils.toArray(".shape").forEach((shape) => {
+  gsap.to(shape, {
+    x: "random(-200, 200)",
+    y: "random(-200, 200)",
+    rotation: "random(-90, 90)",
+    duration: gsap.utils.random(10, 15),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+    repeatRefresh: true
+  });
+});
+
+// 2. Parallax for Background Watermark Texts
+gsap.utils.toArray(".bg-watermark").forEach((watermark) => {
+  gsap.to(watermark, {
+    y: -350, // Move up significantly during scroll
+    ease: "none",
+    scrollTrigger: {
+      trigger: watermark.parentElement,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5,
+    }
+  });
+});
 
 // HTML Elements Reveal
 const revealElements = (selector) => {
   gsap.utils.toArray(selector).forEach((el) => {
-    gsap.fromTo(el, 
-      { autoAlpha: 0, y: 50 },
+    gsap.fromTo(el,
+      { autoAlpha: 0, y: 100 },
       {
-        duration: 1, 
-        autoAlpha: 1, 
+        duration: 1.5,
+        autoAlpha: 1,
         y: 0,
-        ease: "power3.out",
+        ease: "power4.out",
         scrollTrigger: {
           trigger: el,
           start: "top 85%",
@@ -358,29 +358,42 @@ const revealElements = (selector) => {
 setTimeout(() => {
   // Hero reveal
   gsap.to(".hero .content > *", {
-    duration: 1,
+    duration: 1.5,
     autoAlpha: 1,
     y: 0,
     stagger: 0.2,
-    ease: "power3.out"
+    ease: "power4.out"
   });
 
   // Section titles
   revealElements(".section-title");
-  
+
   // Timeline
-  revealElements(".timeline-item");
-  
+  gsap.utils.toArray(".timeline-node").forEach((node) => {
+    ScrollTrigger.create({
+      trigger: node,
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to(node, {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+          ease: "expo.out"
+        });
+      }
+    });
+  });
+
   // Experience grid
   revealElements(".list-item");
-  
-  // Projects
-  revealElements(".project-card");
-  
+
+  // Projects Swiper container reveal
+  revealElements(".project-swiper");
+
   // Skills
   gsap.utils.toArray(".skills").forEach(section => {
     const badges = section.querySelectorAll(".badge");
-    gsap.fromTo(badges, 
+    gsap.fromTo(badges,
       { autoAlpha: 0, scale: 0.5 },
       {
         duration: 0.5,
@@ -396,16 +409,54 @@ setTimeout(() => {
       }
     );
   });
-  
+
   // Travel
   revealElements(".title-large");
   revealElements(".subtitle-large");
   revealElements(".travel-desc");
   revealElements(".map-container");
-  
+
   // Achievements
-  revealElements(".ach-item");
-  
+  ScrollTrigger.create({
+    trigger: ".ach-showcase",
+    start: "top 85%",
+    onEnter: () => {
+      // Smooth hero card reveal
+      gsap.to(".ach-hero-card", {
+        y: 0,
+        autoAlpha: 1,
+        duration: 2,
+        ease: "expo.out"
+      });
+      // Staggered ripple reveal for the list
+      gsap.to(".ach-row", {
+        y: 0,
+        autoAlpha: 1,
+        duration: 1.5,
+        stagger: 0.15,
+        ease: "power4.out",
+        delay: 0.2
+      });
+    }
+  });
+
+  // Certificates
+  gsap.utils.toArray(".cert-accordion").forEach((accordion) => {
+    ScrollTrigger.create({
+      trigger: accordion,
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to(accordion.querySelectorAll(".cert-panel"), {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.5,
+          stagger: 0.15,
+          ease: "expo.out"
+        });
+      }
+    });
+  });
+
   // Final
   revealElements(".final .content > *");
 
@@ -440,11 +491,27 @@ const map = new jsVectorMap({
 });
 
 // ==========================================
-// 7. RESIZE HANDLER
+// 7. SWIPER INITIALIZATION
+// ==========================================
+const swiper = new Swiper('.project-swiper', {
+  modules: [EffectCards, Navigation],
+  effect: 'cards',
+  grabCursor: true,
+  cardsEffect: {
+    slideShadows: false, // We use custom CSS box-shadows
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+// ==========================================
+// 8. RESIZE HANDLER
 // ==========================================
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  if(map) map.updateSize();
+  if (map) map.updateSize();
 });
