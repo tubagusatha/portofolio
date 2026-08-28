@@ -4,11 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import jsVectorMap from 'jsvectormap';
 import 'jsvectormap/dist/maps/world.js';
 import 'jsvectormap/dist/jsvectormap.css';
-import Swiper from 'swiper';
-import { EffectCards, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import 'swiper/css/navigation';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -494,7 +491,6 @@ const map = new jsVectorMap({
 // 7. SWIPER INITIALIZATION
 // ==========================================
 const swiper = new Swiper('.project-swiper', {
-  modules: [EffectCards, Navigation],
   effect: 'cards',
   grabCursor: true,
   cardsEffect: {
