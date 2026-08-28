@@ -1307,25 +1307,41 @@ Achievement */ .achievement-list {
 
   .timeline-node.left .node-content {
     text-align: left;
-
-    /* Certificates Mobile */
-    .cert-accordion {
-      flex-direction: column;
-      height: auto;
-    }
-
-    .cert-panel {
-      flex: none !important;
-      height: 250px;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .cert-info {
-      opacity: 1;
-      transform: translateY(0);
-      padding: 2rem 1.5rem 1.5rem;
-    }
   }
 
-  /* Initial States for GSAP Animations will be handled by JavaScript */
+  /* Projects Mobile */
+  .sticky-projects {
+    gap: 3rem;
+  }
+  
+  .sticky-card {
+    height: auto;
+    min-height: 400px;
+    padding: 2.5rem;
+  }
+  
+  .sticky-card-inner h3 {
+    font-size: 1.8rem;
+  }
+
+  /* Certificates Mobile */
+  .cert-accordion {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .cert-panel {
+    flex: none !important;
+    height: 250px;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .cert-info {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 2rem 1.5rem 1.5rem;
+  }
+}
+
+/* Initial States for GSAP Animations will be handled by JavaScript */
