@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import jsVectorMap from 'jsvectormap';
@@ -8,138 +7,95 @@ import 'jsvectormap/dist/jsvectormap.css';
 gsap.registerPlugin(ScrollTrigger);
 
 // ==========================================
-// 1. THREE.JS SETUP
+// 1. PRELOADER & HERO ANIMATION
 // ==========================================
-const canvas = document.querySelector('#bg-canvas');
-const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x05050a, 0.03);
+const preloader = document.getElementById('preloader');
+const preloaderWords = document.querySelectorAll('.preloader-text .word');
+const loadingBar = document.querySelector('.loading-bar');
+const app = document.getElementById('app');
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+// Lock scroll during preloader
+document.body.style.overflow = 'hidden';
 
-const renderer = new THREE.WebGLRenderer({
-  canvas: canvas,
-  alpha: true,
-  antialias: true
-});
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-// Lighting
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
-
-const pointLight1 = new THREE.PointLight(0x3b82f6, 2);
-pointLight1.position.set(5, 5, 5);
-scene.add(pointLight1);
-
-const pointLight2 = new THREE.PointLight(0x8b5cf6, 2);
-pointLight2.position.set(-5, -5, 5);
-scene.add(pointLight2);
-
-// ==========================================
-// 2. 3D OBJECTS
-// ==========================================
-const objectsGroup = new THREE.Group();
-scene.add(objectsGroup);
-
-// Main abstract shape (representing tech/laptop)
-const mainGeometry = new THREE.IcosahedronGeometry(1.5, 1);
-const mainMaterial = new THREE.MeshPhysicalMaterial({
-  color: 0x111111,
-  wireframe: true,
-  emissive: 0x3b82f6,
-  emissiveIntensity: 0.2,
-});
-const mainObj = new THREE.Mesh(mainGeometry, mainMaterial);
-objectsGroup.add(mainObj);
-
-// Inner core
-const coreGeometry = new THREE.OctahedronGeometry(0.8, 0);
-const coreMaterial = new THREE.MeshStandardMaterial({
-  color: 0x8b5cf6,
-  roughness: 0.2,
-  metalness: 0.8
-});
-const coreObj = new THREE.Mesh(coreGeometry, coreMaterial);
-mainObj.add(coreObj);
-
-// Particles
-const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 500;
-const posArray = new Float32Array(particlesCount * 3);
-
-for (let i = 0; i < particlesCount * 3; i++) {
-  posArray[i] = (Math.random() - 0.5) * 20;
+// Custom Typing Function
+function typeText(element, text, speed, callback) {
+  element.innerHTML = '';
+  element.style.opacity = '1';
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+    } else {
+      clearInterval(interval);
+      if (callback) callback();
+    }
+  }, speed);
 }
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-const particlesMaterial = new THREE.PointsMaterial({
-  size: 0.02,
-  color: 0x06b6d4,
-  transparent: true,
-  opacity: 0.5,
-  blending: THREE.AdditiveBlending
+
+// Preloader Timeline
+const preloaderTl = gsap.timeline({
+  onComplete: () => {
+    preloader.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    document.body.style.overflowX = 'hidden'; // Restore X hiding
+    
+    // Start typing hero text after preloader finishes
+    const subtitle = document.querySelector('.hero .subtitle');
+    const title = document.querySelector('.hero .title');
+    const desc = document.querySelector('.hero .desc');
+    const ctaGroup = document.querySelector('.hero .cta-group');
+    const heroImage = document.querySelector('.hero-image');
+
+    // Make elements visible for typing
+    gsap.set([subtitle, title], { autoAlpha: 1 });
+    
+    typeText(subtitle, "SOFTWARE DEVELOPER & TECHNOLOGY ENTHUSIAST", 40, () => {
+      typeText(title, "TB ATHALLA", 60, () => {
+        // Fade in remaining hero content
+        gsap.to([desc, ctaGroup, heroImage], {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out"
+        });
+      });
+    });
+  }
 });
-const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particlesMesh);
 
-// Globe for travel section
-const globeGeometry = new THREE.SphereGeometry(2, 32, 32);
-const globeMaterial = new THREE.MeshBasicMaterial({
-  color: 0x06b6d4,
-  wireframe: true,
-  transparent: true,
-  opacity: 0.15
-});
-const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-globe.position.set(0, -15, 0); // Hide below initially
-scene.add(globe);
-
-// Mouse tracking for parallax
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-const windowHalfX = window.innerWidth / 2;
-const windowHalfY = window.innerHeight / 2;
-
-document.addEventListener('mousemove', (event) => {
-  mouseX = (event.clientX - windowHalfX);
-  mouseY = (event.clientY - windowHalfY);
+preloaderTl.to(preloaderWords, {
+  y: 0,
+  opacity: 1,
+  duration: 0.8,
+  stagger: 0.1,
+  ease: "power4.out",
+  delay: 0.2
+})
+.to(loadingBar, {
+  width: "100%",
+  duration: 1.5,
+  ease: "power2.inOut"
+}, "-=0.5")
+.to(preloaderWords, {
+  y: -50,
+  opacity: 0,
+  duration: 0.5,
+  stagger: 0.05,
+  ease: "power4.in"
+})
+.to(loadingBar, {
+  opacity: 0,
+  duration: 0.3
+}, "<")
+.to(preloader, {
+  yPercent: -100,
+  duration: 1,
+  ease: "expo.inOut"
 });
 
 // ==========================================
-// 3. ANIMATION LOOP
-// ==========================================
-const clock = new THREE.Clock();
-
-function animate() {
-  requestAnimationFrame(animate);
-  const elapsedTime = clock.getElapsedTime();
-
-  // Mouse Parallax easing
-  targetX = mouseX * 0.001;
-  targetY = mouseY * 0.001;
-
-  objectsGroup.rotation.y += 0.05 * (targetX - objectsGroup.rotation.y);
-  objectsGroup.rotation.x += 0.05 * (targetY - objectsGroup.rotation.x);
-
-  // Gentle float
-  mainObj.rotation.y += 0.002;
-  mainObj.rotation.x += 0.001;
-
-  coreObj.rotation.y -= 0.01;
-  coreObj.rotation.z += 0.005;
-
-  mainObj.position.y = Math.sin(elapsedTime * 0.5) * 0.2;
-
-  particlesMesh.rotation.y = elapsedTime * 0.02;
-
-  globe.rotation.y += 0.003;
-
-  renderer.render(scene, camera);
-}
-animate();
 
 // ==========================================
 // 4. CUSTOM CURSOR & INTERACTIVITY
@@ -269,34 +225,13 @@ gsap.to(".scroll-progress", {
   }
 });
 
-// 3D Scene scroll triggers
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "body",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: 1
-  }
-});
-
-// Animate 3D objects based on scroll progress
-tl.to(mainObj.position, { x: 2, z: -2 }, 0)
-  .to(mainObj.rotation, { y: Math.PI * 2 }, 0)
-  .to(particlesMesh.rotation, { x: Math.PI * 0.5 }, 0)
-  .to(mainObj.position, { x: -2, y: -2, z: 1 }, 0.2) // About
-  .to(mainObj.position, { x: 0, y: 0, z: 2 }, 0.4) // Experience
-  .to(mainObj.rotation, { x: Math.PI, z: Math.PI }, 0.4)
-  .to(mainObj.position, { x: 3, y: 1, z: -1 }, 0.6) // Projects
-  .to(mainObj.material, { wireframe: false, emissiveIntensity: 0.8 }, 0.6)
-  .to(mainObj.scale, { x: 0, y: 0, z: 0 }, 0.7) // Shrink main obj
-  .to(globe.position, { y: 0, z: 1 }, 0.75) // Bring globe up for Travel
-  .to(globe.position, { y: -5, z: -5 }, 0.9) // Final section
-  .to(camera.position, { z: 8 }, 0.9);
+// Removed 3D scroll triggers
 
 
 // Hide elements initially via JS (graceful degradation)
-const hiddenElements = ".hero .content > *, .section-title, .timeline-node, .list-item, .project-swiper, .badge, .title-large, .subtitle-large, .travel-desc, .ach-hero-card, .ach-row, .cert-panel, .final .content > *";
+const hiddenElements = ".section-title, .timeline-node, .list-item, .project-swiper, .badge, .title-large, .subtitle-large, .travel-desc, .ach-hero-card, .ach-row, .cert-panel, .final .content > *";
 gsap.set(hiddenElements, { autoAlpha: 0, y: 100 });
+gsap.set('.hero .desc, .hero .cta-group, .hero .hero-image', { autoAlpha: 0, y: 30 }); // Specifically hide these for typing anim
 
 // ==========================================
 // BACKGROUND PARALLAX EFFECTS
@@ -505,8 +440,5 @@ gsap.utils.toArray(".sticky-card").forEach((card, i, cards) => {
 // 8. RESIZE HANDLER
 // ==========================================
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
   if (map) map.updateSize();
 });
