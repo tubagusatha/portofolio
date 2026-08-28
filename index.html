@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TB Athalla - Software Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Animated Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- 3D Canvas Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Main Content -->
+    <main id="app">
+      
+      <!-- HERO SECTION -->
+      <section class="section hero" id="hero">
+        <div class="content hero-content">
+          <div class="hero-text">
+            <h2 class="subtitle">SOFTWARE DEVELOPER & TECHNOLOGY ENTHUSIAST</h2>
+            <h1 class="title">TB ATHALLA</h1>
+            <p class="desc">Seorang developer yang senang membangun website, aplikasi, dan berbagai digital experience.</p>
+            <div class="cta-group">
+              <a href="#projects" class="btn btn-primary">Explore My Work</a>
+              <a href="#about" class="btn btn-secondary">About Me</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="image-wrapper">
+              <img src="/profile-placeholder.jpg" alt="TB Athalla" class="profile-img" id="profile-pic">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section class="section about" id="about">
+        <div class="content">
+          <h2 class="section-title">Education Journey</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>SMP</h3>
+                <p>Sabilunnajah Bandung</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>SMK</h3>
+                <p>IDN Boarding School Pamijahan, Bogor</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Kuliah</h3>
+                <p>CCIT FTUI Universitas Indonesia</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Kuliah</h3>
+                <p>Politeknik Negeri Jakarta</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE SECTION -->
+      <section class="section experience" id="experience">
+        <div class="content">
+          <h2 class="section-title">Experience & Roles</h2>
+          <div class="grid-list">
+            <div class="list-item">
+              <h3>Mentor / Trainer</h3>
+              <p>Berbagi ilmu dan membimbing talenta baru di bidang teknologi.</p>
+            </div>
+            <div class="list-item">
+              <h3>Web & App Development</h3>
+              <p>Pengalaman mengembangkan berbagai website dan aplikasi.</p>
+            </div>
+            <div class="list-item">
+              <h3>Government Projects</h3>
+              <p>Berkontribusi pada project bersama instansi pemerintah.</p>
+            </div>
+            <div class="list-item">
+              <h3>Tech Events</h3>
+              <p>Aktif mengikuti dan berpartisipasi dalam event teknologi.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section class="section projects" id="projects">
+        <div class="content">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="cards-container">
+            <div class="project-card">
+              <div class="card-inner">
+                <h3>Absensi Mahasiswa</h3>
+                <p>Menjadi Fullstack Developer dalam pembuatan absensi mahasiswa menggunakan Laravel, yang terhubung dengan Telegram Bot, dan MySQL.</p>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="card-inner">
+                <h3>Pinalti Company</h3>
+                <p>E-commerce menggunakan Laravel, MySQL, dan Tailwind CSS dengan menggunakan payment gateway Midtrans.</p>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="card-inner">
+                <h3>Website Pemerintah</h3>
+                <p>Menjadi Fullstack Developer dalam pembuatan website untuk instansi pemerintah menggunakan Laravel, MySQL, dan Tailwind.</p>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="card-inner">
+                <h3>Aplikasi Android</h3>
+                <p>Membuat aplikasi Android menggunakan Kotlin / Flutter.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section class="section skills" id="skills">
+        <div class="content">
+          <h2 class="section-title">Tech Stack</h2>
+          <div class="skills-badges">
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">PHP</span>
+            <span class="badge">Laravel</span>
+            <span class="badge">MySQL</span>
+            <span class="badge">Tailwind CSS</span>
+            <span class="badge">Bootstrap</span>
+            <span class="badge">Kotlin</span>
+            <span class="badge">Flutter</span>
+            <span class="badge">MariaDB</span>
+            <span class="badge">Java</span>
+            <span class="badge">C++</span>
+            <span class="badge">Python</span>
+            <span class="badge">C</span>
+            <span class="badge">Android Studio</span>
+            <span class="badge">Git</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRAVEL SECTION -->
+      <section class="section travel" id="travel">
+        <div class="content text-center">
+          <h2 class="title-large">10 Countries.</h2>
+          <h2 class="subtitle-large">Countless Stories.</h2>
+          <p class="travel-desc">Pengalaman traveling dan backpacking lintas negara yang memperluas wawasan.</p>
+          <div class="map-container">
+            <div id="world-map"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENT SECTION -->
+      <section class="section achievement" id="achievement">
+        <div class="content">
+          <h2 class="section-title">Achievements</h2>
+          <div class="achievement-list">
+            <div class="ach-item highlight">
+              <span class="medal">🏆</span>
+              <h3>Gold Medal</h3>
+              <p>NoSec A+</p>
+            </div>
+            <div class="ach-item">
+              <h3>Mentor / Trainer</h3>
+              <p>Recognized for guiding developers</p>
+            </div>
+            <div class="ach-item">
+              <h3>Tech Certificates</h3>
+              <p>Multiple certifications in software development</p>
+            </div>
+            <div class="ach-item">
+              <h3>Government Projects</h3>
+              <p>Successful delivery of public sector solutions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL SECTION -->
+      <section class="section final" id="final">
+        <div class="content text-center">
+          <h1 class="title">LET'S BUILD SOMETHING.</h1>
+          <h2 class="subtitle">Always curious. Always building.</h2>
+          <div class="cta-group center">
+            <a href="https://instagram.com/thallatb" target="_blank" rel="noopener noreferrer" class="btn btn-primary glow">@thallatb</a>
+          </div>
+          <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="https://instagram.com/thallatb" target="_blank" rel="noopener noreferrer">Instagram</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
