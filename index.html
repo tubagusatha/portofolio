@@ -1,29 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TB Athalla - Software Developer</title>
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="/src/style.css">
 </head>
-
 <body>
-  <!-- Preloader -->
   <div id="preloader">
     <div class="preloader-content">
       <h1 class="preloader-text">
-        <span class="word">Welcome</span>
-        <span class="word">to</span>
-        <span class="word">my</span>
-        <span class="word">web</span>
-        <span class="word">portofolio</span>
+        <span class="word">TB</span>
+        <span class="word">Athalla.</span>
       </h1>
       <div class="loading-bar-container">
         <div class="loading-bar"></div>
@@ -31,186 +23,246 @@
     </div>
   </div>
 
-
-  <!-- MAIN WRAPPER -->
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
-  <!-- Scroll Progress -->
   <div class="scroll-progress"></div>
 
-  <!-- Animated Ambient Glows -->
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
-
-
-
-  <!-- Main Content -->
   <main id="app">
+    
+    <header class="navbar">
+      <div class="nav-content">
+        <div class="logo">TBA.</div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <i class="ph ph-list"></i>
+        </button>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Work</a>
+          <a href="#contact" class="btn btn-outline btn-sm">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    <!-- HERO SECTION -->
     <section class="section hero" id="hero">
       <div class="content hero-content">
         <div class="hero-text">
-          <h2 class="subtitle"></h2>
-          <h1 class="title"></h1>
-          <p class="desc">Seorang developer yang senang membangun website, aplikasi, dan berbagai digital experience.
-          </p>
+          <div class="hero-badge">Software Developer</div>
+          <h1 class="title">TB Athalla.</h1>
+          <p class="desc">Crafting digital experiences with precision, modern technologies, and thoughtful design. Focused on building scalable, performant, and user-centric applications.</p>
           <div class="cta-group">
-            <a href="#projects" class="btn btn-primary">Explore My Work</a>
+            <a href="#projects" class="btn btn-primary">Explore Work <i class="ph ph-arrow-right"></i></a>
             <a href="#about" class="btn btn-secondary">About Me</a>
           </div>
         </div>
-        <div class="hero-image">
-          <div class="image-wrapper">
-            <img src="/profile-placeholder.jpg" alt="TB Athalla" class="profile-img" id="profile-pic">
+        <div class="hero-visual">
+          <div class="image-frame">
+            <div class="frame-border"></div>
+            <img src="/profile-placeholder.jpg" alt="TB Athalla" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=600&auto=format&fit=crop'; this.onerror=null;">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
     <section class="section about" id="about">
-      <div class="bg-watermark left">PATH</div>
       <div class="content">
-        <div class="ach-header" style="text-align: center; margin-bottom: 2rem;">
+        <div class="section-header">
           <h2 class="section-title">Education Journey</h2>
-          <p class="ach-subtitle">The foundation of my engineering career.</p>
+          <p class="section-subtitle">The academic foundation of my engineering career.</p>
         </div>
 
-        <div class="timeline-center">
+        <div class="horizontal-timeline">
           <div class="timeline-line"></div>
-
-          <div class="timeline-node left">
-            <div class="node-dot"></div>
-            <div class="node-content">
-              <span class="node-year">2019 - 2022</span>
-              <h3>SMP</h3>
-              <p>Sabilunnajah Bandung</p>
+          
+          <div class="timeline-step">
+            <div class="step-dot"></div>
+            <div class="step-content">
+              <span class="step-year">2019 — 2022</span>
+              <h3>SMP Sabilunnajah Bandung</h3>
+              <p>Junior High School</p>
+            </div>
+          </div>
+          
+          <div class="timeline-step">
+            <div class="step-dot"></div>
+            <div class="step-content">
+              <span class="step-year">2022 — 2025</span>
+              <h3>SMK IDN Boarding School Pamijahan</h3>
+              <p>Vocational High School</p>
             </div>
           </div>
 
-          <div class="timeline-node right">
-            <div class="node-dot"></div>
-            <div class="node-content">
-              <span class="node-year">2022 - 2025</span>
-              <h3>SMK</h3>
-              <p>IDN Boarding School Pamijahan, Bogor</p>
+          <div class="timeline-step active">
+            <div class="step-dot"></div>
+            <div class="step-content">
+              <span class="step-year">2025 — Present</span>
+              <h3>CCIT FTUI</h3>
+              <p>Undergraduate Program</p>
             </div>
           </div>
-
-          <div class="timeline-node left">
-            <div class="node-dot"></div>
-            <div class="node-content">
-              <span class="node-year">2025 - Present</span>
-              <h3>Kuliah</h3>
-              <p>CCIT FTUI Universitas Indonesia</p>
+          
+          <div class="timeline-step active">
+            <div class="step-dot"></div>
+            <div class="step-content">
+              <span class="step-year">2025 — Present</span>
+              <h3>Politeknik Negeri Jakarta</h3>
+              <p>Diploma Program</p>
             </div>
           </div>
-
-          <div class="timeline-node right">
-            <div class="node-dot"></div>
-            <div class="node-content">
-              <span class="node-year">2025 - Present</span>
-              <h3>Kuliah (Diploma)</h3>
-              <p>Politeknik Negeri Jakarta</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
     <section class="section experience" id="experience">
-      <div class="bg-watermark">ROLES</div>
       <div class="content">
-        <h2 class="section-title">Experience & Roles</h2>
-        <div class="grid-list">
-          <div class="list-item">
-            <div class="list-num">01</div>
-            <div>
-              <h3>Mentor / Trainer</h3>
-              <p>Berbagi ilmu dan membimbing talenta baru di bidang teknologi dengan pendekatan praktikal.</p>
-            </div>
+        <div class="section-header">
+          <h2 class="section-title">Experience & Roles</h2>
+          <p class="section-subtitle">Professional growth and contributions.</p>
+        </div>
+        
+        <div class="grid-cards">
+          <div class="feature-card">
+            <div class="card-icon"><i class="ph ph-chalkboard-teacher"></i></div>
+            <h3>Mentor / Trainer</h3>
+            <p>Berbagi ilmu dan membimbing talenta baru di bidang teknologi dengan pendekatan praktikal dan terstruktur.</p>
           </div>
-          <div class="list-item">
-            <div class="list-num">02</div>
-            <div>
-              <h3>Web & App Development</h3>
-              <p>Pengalaman mengembangkan berbagai website dan aplikasi.</p>
-            </div>
+          <div class="feature-card">
+            <div class="card-icon"><i class="ph ph-code"></i></div>
+            <h3>Web & App Development</h3>
+            <p>Pengalaman intensif mengembangkan berbagai website dan aplikasi berbasis modern tech stack.</p>
           </div>
-          <div class="list-item">
-            <div class="list-num">03</div>
-            <div>
-              <h3>Government Projects</h3>
-              <p>Berkontribusi pada project bersama instansi pemerintah.</p>
-            </div>
+          <div class="feature-card">
+            <div class="card-icon"><i class="ph ph-bank"></i></div>
+            <h3>Government Projects</h3>
+            <p>Berkontribusi secara langsung pada project pengembangan solusi digital bersama instansi pemerintah.</p>
           </div>
-          <div class="list-item">
-            <div class="list-num">04</div>
-            <div>
-              <h3>Tech Events</h3>
-              <p>Aktif mengikuti dan berpartisipasi dalam event teknologi.</p>
-            </div>
+          <div class="feature-card">
+            <div class="card-icon"><i class="ph ph-users-three"></i></div>
+            <h3>Tech Events</h3>
+            <p>Aktif berpartisipasi dan berkontribusi dalam berbagai event dan komunitas teknologi regional maupun nasional.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
     <section class="section projects" id="projects">
-      <div class="bg-watermark">WORK</div>
       <div class="content">
-        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-header">
+          <h2 class="section-title">Selected Work</h2>
+          <p class="section-subtitle">Featured projects highlighting my technical stack.</p>
+        </div>
         
         <div class="sticky-projects">
-          
-          <div class="sticky-card card-1" style="--index: 1;">
+          <div class="sticky-card" style="--index: 1;">
             <div class="sticky-card-inner">
-              <span class="project-year">2023</span>
+              <div class="card-meta">
+                <span class="project-year">2025</span>
+                <span class="project-category">Fullstack</span>
+              </div>
               <h3>Absensi Mahasiswa</h3>
-              <p>Menjadi Fullstack Developer dalam pembuatan absensi mahasiswa menggunakan Laravel, Telegram Bot, dan MySQL.</p>
+              <p>Sistem absensi mahasiswa terintegrasi menggunakan Laravel, Telegram Bot, dan MySQL untuk pemantauan kehadiran real-time.</p>
+              <div class="tech-stack-mini">
+                <span>Laravel</span><span>MySQL</span><span>Telegram API</span>
+              </div>
             </div>
           </div>
           
-          <div class="sticky-card card-2" style="--index: 2;">
+          <div class="sticky-card" style="--index: 2;">
             <div class="sticky-card-inner">
-              <span class="project-year">2022</span>
+              <div class="card-meta">
+                <span class="project-year">2022</span>
+                <span class="project-category">E-Commerce</span>
+              </div>
               <h3>Pinalti Company</h3>
-              <p>E-commerce menggunakan Laravel, MySQL, dan Tailwind CSS dengan menggunakan payment gateway Midtrans.</p>
+              <p>Platform e-commerce modern menggunakan Laravel, MySQL, dan Tailwind CSS, terintegrasi penuh dengan payment gateway Midtrans.</p>
+              <div class="tech-stack-mini">
+                <span>Laravel</span><span>Tailwind</span><span>Midtrans</span>
+              </div>
             </div>
           </div>
           
-          <div class="sticky-card card-3" style="--index: 3;">
+          <div class="sticky-card" style="--index: 3;">
             <div class="sticky-card-inner">
-              <span class="project-year">2022</span>
+              <div class="card-meta">
+                <span class="project-year">2024</span>
+                <span class="project-category">Government</span>
+              </div>
               <h3>Website Pemerintah</h3>
-              <p>Menjadi Fullstack Developer dalam pembuatan website untuk instansi pemerintah menggunakan Laravel, MySQL, dan Tailwind.</p>
+              <p>Pengembangan portal resmi instansi pemerintah dengan standar keamanan dan aksesibilitas tinggi menggunakan Laravel dan Tailwind.</p>
+              <div class="tech-stack-mini">
+                <span>Laravel</span><span>MySQL</span><span>Tailwind</span>
+              </div>
             </div>
           </div>
           
-          <div class="sticky-card card-4" style="--index: 4;">
+          <div class="sticky-card" style="--index: 4;">
             <div class="sticky-card-inner">
-              <span class="project-year">2021</span>
-              <h3>Aplikasi Android</h3>
-              <p>Membuat aplikasi Android menggunakan Kotlin / Flutter untuk berbagai kebutuhan digital.</p>
+              <div class="card-meta">
+                <span class="project-year">2026</span>
+                <span class="project-category">Web Platform</span>
+              </div>
+              <h3>Nihongo Platform</h3>
+              <p>Platform interaktif untuk mempelajari bahasa Jepang, menyediakan materi terstruktur mulai dari huruf Hiragana/Katakana, tata bahasa, hingga kosakata harian.</p>
+              <div class="tech-stack-mini">
+                <span>Web</span><span>Interactive</span>
+              </div>
             </div>
           </div>
           
+          <div class="sticky-card" style="--index: 5;">
+            <div class="sticky-card-inner">
+              <div class="card-meta">
+                <span class="project-year">2023</span>
+                <span class="project-category">Mobile App</span>
+              </div>
+              <h3>NewsApp</h3>
+              <p>Aplikasi Android portal berita terkini, terintegrasi dengan REST API eksternal untuk menyajikan informasi dan artikel terupdate secara real-time.</p>
+              <div class="tech-stack-mini">
+                <span>Kotlin</span><span>REST API</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sticky-card" style="--index: 6;">
+            <div class="sticky-card-inner">
+              <div class="card-meta">
+                <span class="project-year">2022</span>
+                <span class="project-category">Mobile App</span>
+              </div>
+              <h3>IslamPedia</h3>
+              <p>Aplikasi edukasi islami komprehensif, dilengkapi dengan fitur jadwal sholat dinamis, artikel keagamaan, dan panduan ibadah lengkap.</p>
+              <div class="tech-stack-mini">
+                <span>Android</span><span>API</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sticky-card" style="--index: 7;">
+            <div class="sticky-card-inner">
+              <div class="card-meta">
+                <span class="project-year">2022</span>
+                <span class="project-category">Mobile App</span>
+              </div>
+              <h3>Dzikir & Doa App</h3>
+              <p>Aplikasi panduan dzikir pagi-petang dan kumpulan doa harian untuk umat muslim, dikembangkan dengan antarmuka yang sangat user-friendly.</p>
+              <div class="tech-stack-mini">
+                <span>Android</span><span>UI/UX</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS SECTION -->
     <section class="section skills" id="skills">
       <div class="content">
-        <h2 class="section-title">Tech Stack</h2>
+        <div class="section-header">
+          <h2 class="section-title">Tech Stack</h2>
+        </div>
         <div class="skills-badges">
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
+          <span class="badge">HTML5</span>
+          <span class="badge">CSS3</span>
           <span class="badge">JavaScript</span>
           <span class="badge">PHP</span>
           <span class="badge">Laravel</span>
@@ -226,119 +278,137 @@
           <span class="badge">C</span>
           <span class="badge">Android Studio</span>
           <span class="badge">Git</span>
+          <span class="badge">MongoDB</span>
+          <span class="badge">Node.js</span>
         </div>
       </div>
     </section>
 
-    <!-- TRAVEL SECTION -->
     <section class="section travel" id="travel">
       <div class="content text-center">
         <h2 class="title-large">10 Countries.</h2>
         <h2 class="subtitle-large">Countless Stories.</h2>
-        <p class="travel-desc">Pengalaman traveling dan backpacking lintas negara yang memperluas wawasan.</p>
-        <div class="map-container">
+        <p class="travel-desc">Pengalaman traveling lintas negara yang memperluas wawasan global dan kultural.</p>
+        <div class="map-wrapper">
           <div id="world-map"></div>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal1.png" alt="Travel memory 1" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-landscape">
+            <img src="/gallery/gal2.png" alt="Travel memory 2" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal3.png" alt="Travel memory 3" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal4.png" alt="Travel memory 4" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal5.png" alt="Travel memory 5" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal6.png" alt="Travel memory 6" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal7.png" alt="Travel memory 7" loading="lazy">
+          </div>
+          <div class="gallery-img-wrapper gallery-portrait">
+            <img src="/gallery/gal8.png" alt="Travel memory 8" loading="lazy">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ACHIEVEMENT SECTION -->
     <section class="section achievement" id="achievement">
-      <div class="bg-watermark right">AWARDS</div>
       <div class="content">
-        <div class="ach-header">
-          <h2 class="section-title">Awards & Recognitions</h2>
-          <p class="ach-subtitle">Milestones achieved along the journey.</p>
-        </div>
-
-        <div class="ach-showcase">
-          <!-- Left: Hero Achievement (Gold Medal) -->
-          <div class="ach-hero-card">
-            <div class="ach-hero-glow"></div>
-            <div class="ach-hero-content">
-              <div class="ach-icon">🏆</div>
-              <div class="ach-hero-text">
+        <div class="grid-2-col">
+          <div class="awards-col">
+            <h2 class="section-title">Awards</h2>
+            <div class="award-hero-card">
+              <div class="award-icon"><i class="ph-fill ph-trophy"></i></div>
+              <div class="award-info">
                 <h3>Gold Medal</h3>
                 <p>NoSec A+</p>
               </div>
             </div>
+            <div class="award-list">
+              <div class="award-row">
+                <div class="award-year">2023</div>
+                <div class="award-details">
+                  <h4>Mentor & Trainer</h4>
+                  <p>Recognized for guiding developers</p>
+                </div>
+              </div>
+              <div class="award-row">
+                <div class="award-year">2022</div>
+                <div class="award-details">
+                  <h4>Tech Certificates</h4>
+                  <p>Multiple software certifications</p>
+                </div>
+              </div>
+              <div class="award-row">
+                <div class="award-year">2024</div>
+                <div class="award-details">
+                  <h4>Government Projects</h4>
+                  <p>Successful public sector delivery</p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <!-- Right: List of other achievements -->
-          <div class="ach-list-minimal">
-            <div class="ach-row">
-              <div class="ach-row-year">2023</div>
-              <div class="ach-row-title">Mentor & Trainer</div>
-              <div class="ach-row-desc">Recognized for guiding developers</div>
-            </div>
-            <div class="ach-row">
-              <div class="ach-row-year">2022</div>
-              <div class="ach-row-title">Tech Certificates</div>
-              <div class="ach-row-desc">Multiple certifications in software development</div>
-            </div>
-            <div class="ach-row">
-              <div class="ach-row-year">2021</div>
-              <div class="ach-row-title">Government Projects</div>
-              <div class="ach-row-desc">Successful delivery of public sector solutions</div>
+          <div class="certs-col">
+            <h2 class="section-title">Certifications</h2>
+            <div class="cert-grid">
+              <div class="cert-card">
+                <div class="cert-img-wrapper">
+                  <img src="/certificates/cert1.png" alt="Sertifikat JavaScript" onerror="this.src='https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=400&auto=format&fit=crop'; this.onerror=null;">
+                </div>
+                <h4>JavaScript</h4>
+              </div>
+              <div class="cert-card">
+                <div class="cert-img-wrapper">
+                  <img src="/certificates/cert2.png" alt="Sertifikat Java" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=400&auto=format&fit=crop'; this.onerror=null;">
+                </div>
+                <h4>Java</h4>
+              </div>
+              <div class="cert-card">
+                <div class="cert-img-wrapper">
+                  <img src="/certificates/cert3.png" alt="Sertifikat C" onerror="this.src='https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=400&auto=format&fit=crop'; this.onerror=null;">
+                </div>
+                <h4>C Programming</h4>
+              </div>
+              <div class="cert-card">
+                <div class="cert-img-wrapper">
+                  <img src="/certificates/cert4.png" alt="Sertifikat HTML" onerror="this.src='https://images.unsplash.com/photo-1627398225081-24c89544eb1a?q=80&w=400&auto=format&fit=crop'; this.onerror=null;">
+                </div>
+                <h4>HTML / Web</h4>
+              </div>
+              <div class="cert-card">
+                <div class="cert-img-wrapper">
+                  <img src="/certificates/cert5.png" alt="Sertifikat Tambahan" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=400&auto=format&fit=crop'; this.onerror=null;">
+                </div>
+                <h4>Software Engineering</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CERTIFICATES SECTION -->
-    <section class="section certificates" id="certificates">
-      <div class="bg-watermark left">CERTS</div>
-      <div class="content">
-        <div class="ach-header text-center">
-          <h2 class="section-title">Certifications</h2>
-          <p class="ach-subtitle">Professional growth and validated skills.</p>
-        </div>
-
-        <div class="cert-gallery">
-          <div class="cert-accordion">
-            <div class="cert-panel">
-              <img src="/certificates/cert1.png" alt="Certificate 1">
-              <div class="cert-info">
-                <h4>Sertifikat JavaScript</h4>
-              </div>
-            </div>
-            <div class="cert-panel">
-              <img src="/certificates/cert2.png" alt="Certificate 2">
-              <div class="cert-info">
-                <h4>Sertifikat Java</h4>
-              </div>
-            </div>
-            <div class="cert-panel">
-              <img src="/certificates/cert3.png" alt="Certificate 3">
-              <div class="cert-info">
-                <h4>Sertifikat Pemrograman C</h4>
-              </div>
-            </div>
-            <div class="cert-panel">
-              <img src="/certificates/cert4.png" alt="Certificate 4">
-              <div class="cert-info">
-                <h4>Sertifikat Pemrograman HTML</h4>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FINAL SECTION -->
-    <section class="section final" id="final">
+    <section class="section final" id="contact">
       <div class="content text-center">
         <h1 class="title">LET'S BUILD SOMETHING.</h1>
-        <h2 class="subtitle">Always curious. Always building.</h2>
+        <p class="final-subtitle">Always curious. Always building. Let's create impactful solutions together.</p>
         <div class="cta-group center">
-          <a href="https://instagram.com/thallatb" target="_blank" rel="noopener noreferrer"
-            class="btn btn-primary glow">@thallatb</a>
+          <a href="mailto:tb.athalla.nibras@gmail.com" class="btn btn-primary">Say Hello <i class="ph ph-envelope-simple"></i></a>
         </div>
         <div class="social-links">
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="https://instagram.com/thallatb" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/in/tubagus-athalla-nibras-islamy-050b62248"><i class="ph ph-linkedin-logo"></i> LinkedIn</a>
+          <a href="https://github.com/tubagusatha"><i class="ph ph-github-logo"></i> GitHub</a>
+          <a href="https://instagram.com/thallatb" target="_blank" rel="noopener noreferrer"><i class="ph ph-instagram-logo"></i> Instagram</a>
         </div>
       </div>
     </section>
@@ -346,5 +416,4 @@
   </main>
   <script type="module" src="/src/main.js"></script>
 </body>
-
 </html>
